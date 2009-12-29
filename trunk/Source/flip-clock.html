@@ -54,12 +54,12 @@ function showtime () {
         upgradeSeconds(1);
         document.getElementById("flip-clock-sec1").innerHTML = seconds;
         
-        setTimeout("upgradeSeconds(2)", 1000);
-        setTimeout("upgradeSeconds(3)", 2000);
-        setTimeout("upgradeSeconds(4)", 3000);
+        setTimeout("upgradeSeconds(2)", 30);
+        setTimeout("upgradeSeconds(3)", 60);
+        setTimeout("upgradeSeconds(4)", 90);
         
         
-        timerID = setTimeout("showtime()",10000);
+        timerID = setTimeout("showtime()",1000);
         timerRunning = true;
 }
 function upgradeSeconds(phase) {
