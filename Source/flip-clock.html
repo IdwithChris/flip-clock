@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Flip Clock prototype</title>
+	
+	<link rel="stylesheet" href="./css/flip-clock.css" type="text/css" media="screen" charset="utf-8" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="./js/flip-clock.js"></script>
+	
+	
+	<link rel="stylesheet" href="./js/flipclock/files/css/flipclock.css" type="text/css" media="screen" charset="utf-8" />
+	
+	
+</head>
+<body onLoad="startclock();">
+
+<div id="clock">12/24/2009 12:00:00</div>
+
+<script type="text/javascript">
+
+var timerID = null;
+var timerRunning = false;
+var id,pause=0,position=0;
+
+function stopclock (){
+        if(timerRunning)
+                clearTimeout(timerID);
+        timerRunning = false;
+}
+
+function showtime () {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds()
+        var timeValue = "" + ((hours >12) ? hours -12 :hours)
+        timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+        timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+        timeValue += (hours >= 12) ? " P.M." : " A.M."
+        
+        document.getElementById("clock").innerHTML = timeValue;
+        
+        hours   = ( hours   > 12) ? hours -12 : hours;
+        minutes = ((minutes < 10) ? "0" : "") + minutes;
+        seconds = ((seconds < 10) ? "0" : "") + seconds;
+        
+//        document.getElementById("flip-clock-hou").innerHTML = hours;
+//        document.getElementById("flip-clock-min").innerHTML = minutes;
+        
+        upgradeSeconds(1);
+        document.getElementById("flip-clock-sec1").innerHTML = seconds;
+        
+        setTimeout("upgradeSeconds(2)", 1000);
+        setTimeout("upgradeSeconds(3)", 2000);
+        setTimeout("upgradeSeconds(4)", 3000);
+        
+        
+        timerID = setTimeout("showtime()",10000);
+        timerRunning = true;
+}
+function upgradeSeconds(phase) {
+	switch (phase) {
+		case 1:
+				var flipMain = document.getElementById('flip-clock-sec-main');
+				flipMain.className = flipMain.className + " animation-1";
+				break;
+				
+		case 2:
+				var flipMain = document.getElementById('flip-clock-sec-main');
+				flipMain.className = flipMain.className.replace("animation-1", "animation-2");
+				break;
+				
+		case 3:
+				var flipMain = document.getElementById('flip-clock-sec-main');
+				flipMain.className = flipMain.className.replace("animation-2", "animation-3");
+				break;
+				
+		case 4:
+				document.getElementById('flip-clock-sec2').innerHTML = document.getElementById('flip-clock-sec1').innerHTML;
+				var flipMain = document.getElementById('flip-clock-sec-main');
+				flipMain.className = flipMain.className.replace("animation-3", "");
+				break;
+
+	}
+}
+function startclock () {
+        stopclock();
+        showtime();
+}
+// --End Hiding Here -->
+
+
+</script>
+
+	
+<div style="margin: 2em; padding: 3em; background: #000;">
+
+	<span class="flipclock-plate flipclock-plate-min" >
+		<span class="flipclock-plate-r">
+			<span class="flipclock-plate-c">
+				<strong class="flipclock-plate-upper">12</strong>
+				<strong class="flipclock-plate-lower">12</strong>
+				<span class="flipclock-plate-blind"></span>
+			</span>
+		</span>
+	</span>
+	
+	<span class="flipclock-plate flipclock-plate-sec" id="flip-clock-sec-main">
+		<span class="flipclock-plate-r">
+			<span class="flipclock-plate-c">
+				<strong class="flipclock-plate-upper" id="flip-clock-sec1">01</strong>
+				<strong class="flipclock-plate-lower" id="flip-clock-sec2">02</strong>
+				<span class="flipclock-plate-blind"></span>
+			</span>
+		</span>
+	</span>
+	
+
+	
+<!-- 	<span class="flip"><em><strong><b id="flip-clock-min">12</b><span></span></strong></em></span> -->
+<!-- 	<span class="flip"><em><strong><b id="flip-clock-sec">45</b><span></span></strong></em></span> -->
+
+	<!--
+
+	<span class="flip"><em><strong>12<span></span></strong></em></span>
+	<span class="flip"><span><em><strong>часов<span></span></strong></em></span></span>
+	
+	<span class="flip"><span><em><strong>37<span></span></strong></em></span></span>
+	<span class="flip"><span><em><strong>минут<span></span></strong></em></span></span>
+-->
+	
+</div>
+	
+</body>
+</html>
