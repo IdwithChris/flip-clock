@@ -63,7 +63,7 @@
 /** animation */
 
 .animation-1 .flipclock-plate-blind {
-	background: transparent url(../img/flipper-anim-1.png) left -2px repeat-x;
+	background: transparent url(../img/flipper-anim-1.png) left top repeat-x;
 	line-height: 64px;
 	height: 64px;
 	
@@ -73,10 +73,13 @@
 	top: 0;
 	height: 100%;
 	width: 100%;
+}
+.animation-1 .flipclock-plate-upper {
+	height: 20px;
 }
 
 .animation-2 .flipclock-plate-blind {
-	background: transparent url(../img/flipper-anim-2.png) left -2px repeat-x;
+	background: transparent url(../img/flipper-anim-2.png) left top repeat-x;
 	line-height: 64px;
 	height: 64px;
 	
@@ -87,9 +90,12 @@
 	height: 100%;
 	width: 100%;
 }
+.animation-2 .flipclock-plate-upper {
+	height: 34px;
+}
 
 .animation-3 .flipclock-plate-blind {
-	background: transparent url(../img/flipper-anim-3.png) left -2px repeat-x;
+	background: transparent url(../img/flipper-anim-3.png) left top repeat-x;
 	line-height: 64px;
 	height: 64px;
 	
@@ -99,4 +105,7 @@
 	top: 0;
 	height: 100%;
 	width: 100%;
+}
+.animation-3 .flipclock-plate-upper {
+	height: 48px;
 }
