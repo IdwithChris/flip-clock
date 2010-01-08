@@ -51,12 +51,12 @@ function showtime () {
 //        document.getElementById("flip-clock-hou").innerHTML = hours;
 //        document.getElementById("flip-clock-min").innerHTML = minutes;
         
-        upgradeSeconds(1);
-        document.getElementById("flip-clock-sec1").innerHTML = seconds;
         
-        setTimeout("upgradeSeconds(2)", 30);
-        setTimeout("upgradeSeconds(3)", 60);
-        setTimeout("upgradeSeconds(4)", 90);
+        document.getElementById("flip-clock-sec1").innerHTML = seconds;
+        upgradeSeconds(1);
+        setTimeout("upgradeSeconds(2)", 1000);
+        setTimeout("upgradeSeconds(3)", 2000);
+        setTimeout("upgradeSeconds(4)", 3000);
         
         
         timerID = setTimeout("showtime()",1000);
@@ -66,6 +66,7 @@ function upgradeSeconds(phase) {
 	switch (phase) {
 		case 1:
 				var flipMain = document.getElementById('flip-clock-sec-main');
+				flipMain.className = flipMain.className.replace("animation-4", "");
 				flipMain.className = flipMain.className + " animation-1";
 				break;
 				
@@ -80,9 +81,10 @@ function upgradeSeconds(phase) {
 				break;
 				
 		case 4:
-				document.getElementById('flip-clock-sec2').innerHTML = document.getElementById('flip-clock-sec1').innerHTML;
 				var flipMain = document.getElementById('flip-clock-sec-main');
-				flipMain.className = flipMain.className.replace("animation-3", "");
+				flipMain.className = flipMain.className.replace("animation-3", "animation-4");
+				
+				document.getElementById('flip-clock-sec2').innerHTML = document.getElementById('flip-clock-sec1').innerHTML;
 				break;
 
 	}
@@ -96,10 +98,50 @@ function startclock () {
 
 </script>
 
+<style type="text/css">
+.crome-clock {
+	background: transparent url(./img/chrome-clock-left.png) no-repeat left top;
+	padding-left: 48px;
 	
-<div style="margin: 2em; padding: 3em; background: #000;">
+	display: inline-block;
+	height: 113px;
+}
+.crome-clock .crome-clock-wr2 {
+	background: transparent url(./img/chrome-clock-right.png) no-repeat right top;
+	padding: 0 48px 0 0;
+	
+	display: inline-block;
+	height: 113px;
 
-	<span class="flipclock-plate flipclock-plate-min" >
+}
+.crome-clock .crome-clock-wr3 {
+	background: transparent url(./img/chrome-clock-center.png) repeat-x left top;
+	padding: 0;
+	
+	display: inline-block;
+	height: 113px;
+}
+
+.crome-clock .crome-clock-wr4 {
+	color: white;
+	position: relative;
+	top: 20px;
+	margin-left: -44px;
+	left: 22px;
+	
+	display: inline-block;
+}
+.crome-clock .flipclock-plate-c {
+	width: 62px;
+}
+</style>
+
+	<span class="crome-clock">
+		<span class="crome-clock-wr2">
+			<span class="crome-clock-wr3">
+				<span class="crome-clock-wr4">
+				
+	<span class="flipclock-plate flipclock-plate-min" style="margin-right: -2px;">
 		<span class="flipclock-plate-r">
 			<span class="flipclock-plate-c">
 				<strong class="flipclock-plate-upper">12</strong>
@@ -115,25 +157,18 @@ function startclock () {
 				<strong class="flipclock-plate-upper" id="flip-clock-sec1">01</strong>
 				<strong class="flipclock-plate-lower" id="flip-clock-sec2">02</strong>
 				<span class="flipclock-plate-blind"></span>
+				<span class="flipclock-plate-upper-animation"></span>
+				<span class="flipclock-plate-lower-animation"></span>
 			</span>
 		</span>
 	</span>
-	
+				
+				</span>
+			</span>
+		</span>
+	</span>
 
 	
-<!-- 	<span class="flip"><em><strong><b id="flip-clock-min">12</b><span></span></strong></em></span> -->
-<!-- 	<span class="flip"><em><strong><b id="flip-clock-sec">45</b><span></span></strong></em></span> -->
-
-	<!--
-
-	<span class="flip"><em><strong>12<span></span></strong></em></span>
-	<span class="flip"><span><em><strong>часов<span></span></strong></em></span></span>
-	
-	<span class="flip"><span><em><strong>37<span></span></strong></em></span></span>
-	<span class="flip"><span><em><strong>минут<span></span></strong></em></span></span>
--->
-	
-</div>
 	
 </body>
 </html>
