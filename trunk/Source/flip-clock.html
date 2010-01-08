@@ -51,12 +51,11 @@ function showtime () {
 //        document.getElementById("flip-clock-hou").innerHTML = hours;
 //        document.getElementById("flip-clock-min").innerHTML = minutes;
         
-        
         document.getElementById("flip-clock-sec1").innerHTML = seconds;
         upgradeSeconds(1);
-        setTimeout("upgradeSeconds(2)", 1000);
-        setTimeout("upgradeSeconds(3)", 2000);
-        setTimeout("upgradeSeconds(4)", 3000);
+        setTimeout("upgradeSeconds(2)", 30);
+        setTimeout("upgradeSeconds(3)", 60);
+        setTimeout("upgradeSeconds(4)", 90);
         
         
         timerID = setTimeout("showtime()",1000);
@@ -66,7 +65,6 @@ function upgradeSeconds(phase) {
 	switch (phase) {
 		case 1:
 				var flipMain = document.getElementById('flip-clock-sec-main');
-				flipMain.className = flipMain.className.replace("animation-4", "");
 				flipMain.className = flipMain.className + " animation-1";
 				break;
 				
@@ -80,9 +78,9 @@ function upgradeSeconds(phase) {
 				flipMain.className = flipMain.className.replace("animation-2", "animation-3");
 				break;
 				
-		case 4:
+		case 4:	
 				var flipMain = document.getElementById('flip-clock-sec-main');
-				flipMain.className = flipMain.className.replace("animation-3", "animation-4");
+				flipMain.className = flipMain.className.replace("animation-3", "");
 				
 				document.getElementById('flip-clock-sec2').innerHTML = document.getElementById('flip-clock-sec1').innerHTML;
 				break;
@@ -157,8 +155,6 @@ function startclock () {
 				<strong class="flipclock-plate-upper" id="flip-clock-sec1">01</strong>
 				<strong class="flipclock-plate-lower" id="flip-clock-sec2">02</strong>
 				<span class="flipclock-plate-blind"></span>
-				<span class="flipclock-plate-upper-animation"></span>
-				<span class="flipclock-plate-lower-animation"></span>
 			</span>
 		</span>
 	</span>
