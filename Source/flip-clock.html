@@ -42,22 +42,23 @@ function showtime () {
         timeValue += ((seconds < 10) ? ":0" : ":") + seconds
         timeValue += (hours >= 12) ? " P.M." : " A.M."
         
-        document.getElementById("clock").innerHTML = timeValue;
+        if (document.getElementById("clock").innerHTML != timeValue) {
+	        document.getElementById("clock").innerHTML = timeValue;
+	        
+	        hours   = ( hours   > 12) ? hours -12 : hours;
+	        minutes = ((minutes < 10) ? "0" : "") + minutes;
+	        seconds = ((seconds < 10) ? "0" : "") + seconds;
+	        
+	//        document.getElementById("flip-clock-hou").innerHTML = hours;
+	//        document.getElementById("flip-clock-min").innerHTML = minutes;
+	        
+	        document.getElementById("flip-clock-sec1").innerHTML = seconds;
+	        upgradeSeconds(1);
+	        setTimeout("upgradeSeconds(2)", 30);
+	        setTimeout("upgradeSeconds(3)", 60);
+	        setTimeout("upgradeSeconds(4)", 90);
         
-        hours   = ( hours   > 12) ? hours -12 : hours;
-        minutes = ((minutes < 10) ? "0" : "") + minutes;
-        seconds = ((seconds < 10) ? "0" : "") + seconds;
-        
-//        document.getElementById("flip-clock-hou").innerHTML = hours;
-//        document.getElementById("flip-clock-min").innerHTML = minutes;
-        
-        document.getElementById("flip-clock-sec1").innerHTML = seconds;
-        upgradeSeconds(1);
-        setTimeout("upgradeSeconds(2)", 30);
-        setTimeout("upgradeSeconds(3)", 60);
-        setTimeout("upgradeSeconds(4)", 90);
-        
-        
+        }
         timerID = setTimeout("showtime()",1000);
         timerRunning = true;
 }
