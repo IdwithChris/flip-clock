@@ -1,0 +1,1 @@
+This javascript library allows you to create pretty flip clock on your web page.
